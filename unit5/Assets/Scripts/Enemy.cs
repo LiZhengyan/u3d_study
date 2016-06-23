@@ -39,42 +39,44 @@ public class Enemy : MonoBehaviour {
 		//无论哪种状态，都使用了IsInTransition判断是否是过渡状态，如果是，什么也不做。
 
 		AnimatorStateInfo stateInfo = m_ani.GetCurrentAnimatorStateInfo(0);
-		// Èç¹û´¦ÓÚ´ý»ú×´Ì¬
+		//如果在待机状态，。而且不是在过渡阶段
 		if (stateInfo.nameHash == Animator.StringToHash("Base Layer.idle") && !m_ani.IsInTransition(0))
 		{
 			m_ani.SetBool("idle", false);
+			//设置为false以后。如果没有其他动作被true，那么最后执行的动作会一直执行（设loop了的）
 			
-			// ´ý»úÒ»¶¨Ê±¼ä
+			// 站一会别动
 			m_timer -= Time.deltaTime;
 			if (m_timer > 0)
 				return;
 			
-			// Èç¹û¾àÀëÖ÷½ÇÐ¡ÓÚ1.5Ã×£¬½øÈë¹¥»÷¶¯»­×´Ì¬
+			// 距离小于1.5执行攻击
 			if (Vector3.Distance(m_transform.position, m_player.m_transfrom.position) < 1.5f)
 			{
 				m_ani.SetBool("attack", true);
 			}
 			else
 			{
-				// ÖØÖÃ¶¨Ê±Æ÷
+				//等1秒以后，再次待机
 				m_timer=1;
 				
-				// ÉèÖÃÑ°Â·Ä¿±êµã
+				//设定路线
 				m_agent.SetDestination(m_player. m_transfrom.position);
 				
-				// ½øÈëÅÜ²½¶¯»­×´Ì¬
+				//开始跑
 				m_ani.SetBool("run", true);
 			}
 		}
 		
-		// Èç¹û´¦ÓÚÅÜ²½×´Ì¬
+		// 在跑动过程中
 		if (stateInfo.nameHash == Animator.StringToHash("Base Layer.run") && !m_ani.IsInTransition(0))
 		{
 			
 			m_ani.SetBool("run", false);
+			//顺手设置为false，不影响跑动
 			
 			
-			// Ã¿¸ô1ÃëÖØÐÂ¶¨Î»Ö÷½ÇµÄÎ»ÖÃ
+			// 每隔1秒重新定位玩家位置
 			m_timer -= Time.deltaTime;
 			if (m_timer < 0)
 			{
@@ -83,41 +85,41 @@ public class Enemy : MonoBehaviour {
 				m_timer = 1;
 			}
 			
-			// ×·ÏòÖ÷½Ç
+			// 追玩家
 			MoveTo();
 			
-			// Èç¹û¾àÀëÖ÷½ÇÐ¡ÓÚ1.5Ã×£¬ÏòÖ÷½Ç¹¥»÷
+			// 距离1.5 开始攻击
 			if (Vector3.Distance(m_transform.position, m_player. m_transfrom.position) <= 1.5f)
 			{
-				//Í£Ö¹Ñ°Â·	
+				//停止寻路
 				m_agent.ResetPath();
-				// ½øÈë¹¥»÷×´Ì¬
+				// 进入攻击状态
 				m_ani.SetBool("attack", true);
 			}
 		}
 		
-		// Èç¹û´¦ÓÚ¹¥»÷×´Ì¬
+		// 攻击状态
 		if (stateInfo.nameHash == Animator.StringToHash("Base Layer.attack") && !m_ani.IsInTransition(0))
 		{
 			
-			// ÃæÏòÖ÷½Ç
+			//面向玩家
 			RotateTo();
 			
 			m_ani.SetBool("attack", false);
 			
-			// Èç¹û¹¥»÷¶¯»­²¥Íê£¬ÖØÐÂ½øÈë´ý»ú×´Ì¬
+			// 动画播完。重新进入待机
 			if (stateInfo.normalizedTime >= 1.0f)
 			{
 				m_ani.SetBool("idle", true);
 				
-				// ÖØÖÃ¼ÆÊ±Æ÷
+				// 重置时间
 				m_timer = 2;
 				
 //				m_player.OnDamage(1);
 			}
 		}
 		
-		// ËÀÍö
+		//挂掉
 		if (stateInfo.nameHash == Animator.StringToHash("Base Layer.death") && !m_ani.IsInTransition(0))
 		{
 			if (stateInfo.normalizedTime >= 1.0f)

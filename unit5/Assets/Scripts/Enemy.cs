@@ -153,4 +153,11 @@ public class Enemy : MonoBehaviour {
 		m_transform.eulerAngles=new Vector3(0,angle,0);
 
 	}
+	public void OnDamage(int damage){
+		m_life-=damage;
+		if(m_life<=0){
+			m_ani.SetBool("death",true);
+			m_agent.ResetPath();
+		}
+	}
 }

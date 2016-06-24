@@ -115,7 +115,7 @@ public class Enemy : MonoBehaviour {
 				// 重置时间
 				m_timer = 2;
 				
-//				m_player.OnDamage(1);
+				m_player.OnDamage(1);
 			}
 		}
 		
@@ -124,7 +124,7 @@ public class Enemy : MonoBehaviour {
 		{
 			if (stateInfo.normalizedTime >= 1.0f)
 			{
-//				OnDeath();
+				OnDeath();
 				
 			}
 		}
@@ -132,7 +132,10 @@ public class Enemy : MonoBehaviour {
 		
 	}
 
-
+	void OnDeath(){
+		GameManager.Instance.SetScore(100);
+		Destroy(this.gameObject);
+	}
 	void MoveTo()
 	{
 		float speed=m_moveSpeed*Time.deltaTime;

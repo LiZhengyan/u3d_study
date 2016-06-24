@@ -47,6 +47,11 @@ public class playerCtrl : MonoBehaviour {
 			RaycastHit info;     //保存射线结果
 			bool hit=Physics.Raycast(m_muzzlepoint.position,m_camTransfrom.TransformDirection(Vector3.forward),
 									out info,100,m_layer);
+									//m_muzzlepoint 枪头
+									//以摄像机做参照物超前方向 转换为欧啦角 世界欧拉角
+									//info射击结果，
+									//距离
+									//层
 			Debug.Log("发射子弹");
 			if(hit){
 				Debug.Log("射中了");

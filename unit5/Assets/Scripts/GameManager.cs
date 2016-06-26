@@ -43,4 +43,18 @@ public class GameManager : MonoBehaviour {
 	public void SetLife(int life){
 		txt_life.text=life.ToString();
 	}
+
+	void OnGUI(){
+		if(m_player.m_life<=0){
+			GUI.skin.label.alignment=TextAnchor.MiddleCenter;
+			GUI.skin.label.fontSize=40;
+			GUI.Label(new Rect(0,0,Screen.width,Screen.height),"游戏结束");
+			GUI.skin.label.fontSize=30;
+			if(GUI.Button(new Rect(Screen.width*0.5f-150,Screen.height*0.75f,300,40),"Try again")){
+				Application.LoadLevel(Application.loadedLevelName);
+			}
+
+
+		}
+	}
 }

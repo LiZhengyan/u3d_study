@@ -12,10 +12,16 @@ public class Enemy : MonoBehaviour {
 	float m_rotspeed=120; //角色旋转速度
 	Animator m_ani;   //动画组建
 	int m_life=15; //生命值
-	float m_timer=2;
+	float m_timer=2; //休息时间
+	protected EnemySpawn m_spawn; //刷怪实例 在init里面被初始化
 
-	
-
+	//让spawn 把ins的enemy通过 getcomponent获得对象上的enemy实例，
+	//然后把自身实例传过去，让enemy来累加spawn的敌人数目
+	//
+	public void Init(EnemySpawn spawn){
+		m_spawn=spawn;
+		m_spawn.m_enemyCount+=1;
+	}
 	void Start () {
 		m_transform=this.transform;
 		m_player=GameObject.FindGameObjectWithTag("Player").GetComponent<playerCtrl>();
@@ -133,6 +139,7 @@ public class Enemy : MonoBehaviour {
 	}
 
 	void OnDeath(){
+		m_spawn.m_enemyCount-=1;
 		GameManager.Instance.SetScore(100);
 		Destroy(this.gameObject);
 	}

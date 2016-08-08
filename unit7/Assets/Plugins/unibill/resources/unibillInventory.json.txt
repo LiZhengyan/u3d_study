@@ -1,0 +1,39 @@
+{
+  "iOSSKU": "com.yxwgame.liemo",
+  "macAppStoreSKU": "",
+  "androidBillingPlatform": "GooglePlay",
+  "GooglePlayPublicKey": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhYsZVj5c+OxRxqaRiW92FqhSSnGQPAkNnJ9B4BY1lnrYl/xLp7nXJUuH0YCNv8iGuOz2eYX6pYJhGhYu34f0LQmcQALWI5Dzr8fc3pmkHf4fhPeXw9f6lf7GHk0jYc0zCHAyl0iN/bbFMNeX8W5fKPvSbmmUfi8IpmExu0dVSZ63QgHqOMEVeYSY0uupfMsWUe632aHC8SrVTZp3EbSWVSKqZp1PAjmGDMQ2V0mPeCOBEDrh9ZINAljEguf9y4k3VlAOxyFBPPahoDNCqrueOUQuGs0StxBwzPgXHrDh3pulw/D632pZZokZ4rhmBMDd0l+oah0eCzrC5hYRg2cvvQIDAQAB",
+  "useAmazonSandbox": false,
+  "UseWP8MockingFramework": false,
+  "useHostedConfig": true,
+  "hostedConfigUrl": null,
+  "UseWin8_1Sandbox": false,
+  "samsungAppsMode": "PRODUCTION",
+  "samsungAppsItemGroupId": "",
+  "unibillAnalyticsAppId": "",
+  "unibillAnalyticsAppSecret": "",
+  "purchasableItems": {
+    "11493557": {
+      "@id": "11493557",
+      "@purchaseType": "Consumable",
+      "name": "zuanshi60",
+      "description": "zuanshi60",
+      "downloadableContentId": null,
+      "platforms": {
+        "GooglePlay": {
+          "GooglePlay.Id": "zuanshi60",
+          "priceInLocalCurrency": 1.0,
+          "defaultLocale": "en_US"
+        },
+        "AmazonAppstore": {},
+        "SamsungApps": {},
+        "AppleAppStore": {},
+        "MacAppStore": {},
+        "WindowsPhone8": {},
+        "Windows8_1": {},
+        "UnityEditor": {}
+      }
+    }
+  },
+  "currencies": {}
+}

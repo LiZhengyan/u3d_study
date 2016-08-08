@@ -1,0 +1,2 @@
+function fib(n)
+	

@@ -1,0 +1,2 @@
+Product ID,Published State,Purchase Type,Auto Translate,Locale; Title; Description,Auto Fill Prices,Price
+zuanshi60,published,managed_by_android,false,"en_US;zuanshi60;zuanshi60",true,1000000

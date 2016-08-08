@@ -1,0 +1,5 @@
+/Users/lizhengyan/Projects/MyTest2/MyTest2/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/Users/lizhengyan/Projects/MyTest2/MyTest2/bin/Debug/MyTest2.exe.mdb
+/Users/lizhengyan/Projects/MyTest2/MyTest2/bin/Debug/MyTest2.exe
+/Users/lizhengyan/Projects/MyTest2/MyTest2/obj/x86/Debug/MyTest2.exe
+/Users/lizhengyan/Projects/MyTest2/MyTest2/obj/x86/Debug/MyTest2.exe.mdb
